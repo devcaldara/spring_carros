@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Carros</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Lista de Carros</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Fabricante</th>
+                <th>Placa</th>
+                <th>Data Entrada</th>
+                <th>Gerenciar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="carro : ${carros}">
+                <td th:text="${carro.nome}"></td>
+                <td th:text="${carro.fabricante}"></td>
+                <td th:text="${carro.placa}"></td>
+                <td th:text="${carro.dataEntrada}"></td>
+                <td>
+                    <!-- <a th:href="@{'cadastroCarroEditar.html?id=' + ${carro.id}}">Editar</a> -->
+                    <!-- <a th:href="@{/cadastroCarroEditar.html(id=${carro.id})}">Editar</a> |  -->
+                    <a th:href="@{'/carros/' + ${carro.id}}">Editar</a>
+                    |
+                    <a th:href="@{'/carros/deletar/' + ${carro.id}}">Deletar</a>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
